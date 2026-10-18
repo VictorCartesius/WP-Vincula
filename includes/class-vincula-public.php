@@ -1,6 +1,6 @@
 <?php
 /**
- * Front end: shortcode, query, markup and inline styles.
+ * Front end: shortcode, query, markup and stylesheet enqueue.
  *
  * @package Vincula
  */
@@ -21,6 +21,13 @@ class Vincula_Public {
         add_shortcode( 'vincula', array( $this, 'render_cards' ) );
         // Kept for backwards compatibility with pages using the earlier shortcode name.
         add_shortcode( 'friend_cards', array( $this, 'render_cards' ) );
+        // Load the stylesheet in the document head so that themes which swap page
+        // content without a full reload (PJAX/AJAX navigation) still render the cards.
+        add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
+    }
+
+    public function enqueue_styles() {
+        wp_enqueue_style( 'vincula', VINCULA_URL . 'assets/vincula.css', array(), VINCULA_VERSION );
     }
 
     public function render_cards() {
@@ -67,73 +74,6 @@ class Vincula_Public {
 
         wp_reset_postdata();
         $output .= '</div>';
-
-        add_action( 'wp_footer', function() {
-            echo '<style>
-            .vincula-grid {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 20px;
-                justify-content: flex-start;
-                margin: 20px 0;
-            }
-            .vincula-item {
-                flex: 0 0 calc(50% - 10px);
-                max-width: calc(50% - 10px);
-                background: #f9f9f9;
-                border: 1px solid #e0e0e0;
-                border-radius: 12px;
-                padding: 16px 12px;
-                box-sizing: border-box;
-                transition: all 0.2s ease;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-            }
-            .vincula-item:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 8px 16px rgba(0,0,0,0.08);
-                border-color: #b0b0b0;
-            }
-            .vincula-link {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                text-decoration: none;
-                color: #333;
-            }
-            .vincula-icon {
-                width: 72px;
-                height: 72px;
-                border-radius: 50%;
-                object-fit: contain;
-                background: #fff;
-                padding: 4px;
-                margin-bottom: 8px;
-                border: 1px solid #eee;
-            }
-            .vincula-name {
-                font-weight: 600;
-                font-size: 1rem;
-                margin-bottom: 4px;
-                color: #1a1a1a;
-            }
-            .vincula-desc {
-                font-size: 0.85rem;
-                color: #666;
-                line-height: 1.4;
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-            }
-            @media (max-width: 600px) {
-                .vincula-item {
-                    flex: 0 0 100%;
-                    max-width: 100%;
-                }
-            }
-            </style>';
-        } );
 
         return $output;
     }

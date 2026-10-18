@@ -11,6 +11,7 @@ desktop.ini
 # Editors and IDEs
 .idea/
 .vscode/
+*.code-workspace
 *.sublime-project
 *.sublime-workspace
 *.swp
@@ -36,6 +37,9 @@ build/
 *.tar
 *.tar.gz
 *.tgz
+
+# Local reference copy of the previous plugin release
+old/
 
 # Local environment files
 .env

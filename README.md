@@ -3,7 +3,7 @@
 > Blogroll friend links for WordPress: curate entries in the admin and render them anywhere with a single shortcode.
 
 - **Plugin slug:** `vincula`
-- **Version:** 1.0.0
+- **Version:** 1.0.1
 - **Author:** Victor Cartesius
 - **Text domain:** `vincula`
 - **License:** MIT
@@ -21,7 +21,7 @@
 - **CSV import / export** — move the whole list in and out of the site from a single screen.
 - **Quick edit** — change URL, logo, priority and description straight from the list screen, without opening the editor.
 - **Responsive by default** — two columns on desktop, single column below 600px.
-- **No dependencies, no configuration** — activate and go; styles ship with the shortcode output.
+- **No dependencies, no configuration** — activate and go; a small bundled stylesheet is enqueued on the front end.
 
 ---
 
@@ -173,7 +173,7 @@ The shortcode outputs the following structure, so you can override styles with y
 | `.vincula-name` | Bold site name |
 | `.vincula-desc` | Site description, clamped to two lines |
 
-Styles are printed as an inline `<style>` block on `wp_footer`; no separate CSS file is generated.
+Styles live in `assets/vincula.css` and are enqueued on `wp_enqueue_scripts`, so they are part of the document head and survive themes that swap page content without a full reload (PJAX / AJAX navigation).
 
 ---
 
@@ -220,7 +220,7 @@ Without a custom logo, the plugin requests `https://www.google.com/s2/favicons?d
 
 **Can I show three or four columns instead of two?**
 
-Yes. The styles live in the `wp_footer` block inside `includes/class-vincula-public.php`. Adjust `flex` and `max-width` on `.vincula-item` (for example `calc(33.33% - 14px)` for three columns) and update the `@media (max-width: 600px)` breakpoint accordingly.
+Yes. The styles live in `assets/vincula.css`. Adjust `flex` and `max-width` on `.vincula-item` (for example `calc(33.33% - 14px)` for three columns) and update the `@media (max-width: 600px)` breakpoint accordingly.
 
 **The admin interface is in English — can it be translated?**
 
@@ -244,7 +244,9 @@ vincula/
 ├── includes/
 │   ├── class-vincula-admin.php    # Admin: post type, meta boxes, saving, list columns, quick edit, media modal
 │   ├── class-vincula-csv.php      # Admin: CSV import and export screen
-│   └── class-vincula-public.php   # Front end: shortcode, query, markup, inline styles
+│   └── class-vincula-public.php   # Front end: shortcode, query, markup, stylesheet enqueue
+├── assets/
+│   └── vincula.css                # Card grid styles, loaded in the document head
 ├── samples/
 │   └── friend-links-sample.csv    # Example import file
 ├── .gitattributes                 # Line-ending rules
@@ -256,6 +258,10 @@ vincula/
 ---
 
 ## Change Log
+
+### 1.0.1
+
+- Moved the card styles from an inline `wp_footer` block into `assets/vincula.css`, enqueued on `wp_enqueue_scripts`. Fixes cards rendering unstyled on the first visit with themes that navigate via PJAX/AJAX and only swap the content container.
 
 ### 1.0.0
 

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Vincula – Blogroll Friend Links
  * Description: Manage blogroll friend links in the admin and display them anywhere with the [vincula] shortcode.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Victor Cartesius
  * License: MIT
  * License URI: https://opensource.org/licenses/MIT
@@ -13,7 +13,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'VINCULA_VERSION', '1.0.0' );
+define( 'VINCULA_VERSION', '1.0.1' );
 define( 'VINCULA_PATH', plugin_dir_path( __FILE__ ) );
 define( 'VINCULA_URL', plugin_dir_url( __FILE__ ) );
 
