@@ -1,0 +1,4 @@
+name,description,url,logo,priority,status
+WordPress.org,Official plugin and theme directory,https://wordpress.org,,10,publish
+CSS-Tricks,"Articles, demos and screencasts about front-end development",https://css-tricks.com,,20,publish
+Smashing Magazine,Design and UX resources,https://www.smashingmagazine.com,https://www.smashingmagazine.com/images/favicon/favicon.png,30,draft

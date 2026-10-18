@@ -1,0 +1,43 @@
+# Operating system files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Editors and IDEs
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.orig
+*.rej
+
+# Build output and dependency folders
+node_modules/
+vendor/
+dist/
+build/
+.cache/
+
+# Release archives
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
+# Local environment files
+.env
+.env.*
+!.env.example
