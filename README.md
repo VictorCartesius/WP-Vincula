@@ -3,7 +3,7 @@
 > Blogroll friend links for WordPress: curate entries in the admin and render them anywhere with a single shortcode.
 
 - **Plugin slug:** `vincula`
-- **Version:** 1.0
+- **Version:** 1.0.0
 - **Author:** Victor Cartesius
 - **Text domain:** `vincula`
 - **License:** MIT
@@ -257,7 +257,7 @@ vincula/
 
 ## Change Log
 
-### 1.0
+### 1.0.0
 
 - Initial release as **Vincula**, formerly **Blogroll-FriendLinks**.
 - `vinculum` custom post type and meta boxes (URL / Logo / Priority).
