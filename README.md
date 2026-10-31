@@ -1,5 +1,9 @@
 # Vincula
 
+> Article: https://cartesius.site/uestc_wiredanchor/
+
+> Preview: https://cartesius.site/blogroll/
+
 > Blogroll friend links for WordPress: curate entries in the admin and render them anywhere with a single shortcode.
 
 - **Plugin slug:** `vincula`
